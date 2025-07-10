@@ -2,19 +2,14 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
-interface SubscriptionModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  ctaText?: string;
-}
+import { SubscriptionModalProps } from '@/types';
 
 interface FormData {
   email: string;
   name?: string;
 }
 
-export default function SubscriptionModal({ isOpen, onClose, ctaText = 'Subscribe Now' }: SubscriptionModalProps) {
+export default function SubscriptionModal({ isOpen, onClose, ctaText = 'Subscribe Now', siteSettings }: SubscriptionModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   
@@ -48,6 +43,9 @@ export default function SubscriptionModal({ isOpen, onClose, ctaText = 'Subscrib
   };
 
   if (!isOpen) return null;
+
+  // Get subscription price safely
+  const subscriptionPrice = siteSettings?.metadata?.subscription_price || '$199';
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -170,7 +168,7 @@ export default function SubscriptionModal({ isOpen, onClose, ctaText = 'Subscrib
                       Subscribing...
                     </div>
                   ) : (
-                    ctaText
+                    `${ctaText} - ${subscriptionPrice}/month`
                   )}
                 </button>
               </form>

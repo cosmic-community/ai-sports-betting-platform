@@ -136,9 +136,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               )}
 
-              {/* Subscription Gate with Full Content */}
+              {/* Subscription Gate with Full Content - FIXED props */}
               <SubscriptionGate
-                fullContent={post.metadata.full_content || post.content || ''}
+                content={post.metadata.full_content || post.content || ''}
                 ctaText={post.metadata.cta_text || siteSettings?.metadata.blog_cta_default || 'Subscribe to Read More'}
               />
             </div>

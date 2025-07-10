@@ -1,12 +1,7 @@
 import Link from 'next/link';
-import { BlogPost } from '@/types';
+import { BlogCardProps } from '@/types';
 
-interface BlogCardProps {
-  post: BlogPost;
-  isPreview?: boolean;
-}
-
-export default function BlogCard({ post, isPreview = false }: BlogCardProps) {
+export default function BlogCard({ post, isPreview = false, featured = false }: BlogCardProps) {
   // Safe category display with proper typing
   const getCategoryDisplay = (category?: { key: string; value: string }): string => {
     if (!category) return '';
@@ -81,7 +76,7 @@ export default function BlogCard({ post, isPreview = false }: BlogCardProps) {
           </Link>
 
           {/* Featured Badge */}
-          {post.metadata.featured && (
+          {(post.metadata.featured || featured) && (
             <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">
               Featured
             </span>

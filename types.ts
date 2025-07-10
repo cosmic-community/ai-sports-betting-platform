@@ -45,6 +45,7 @@ interface Author extends CosmicObject {
 interface Category {
   key: string;
   value: string;
+  title?: string; // Added to fix the title access error
 }
 
 // Blog Posts interface - UPDATED with proper category typing
@@ -160,7 +161,7 @@ interface ContactFormData {
   message: string;
 }
 
-// Component prop types
+// Component prop types - FIXED to match actual usage
 interface HeroProps {
   siteSettings: SiteSettings;
 }
@@ -168,6 +169,7 @@ interface HeroProps {
 interface BlogCardProps {
   post: BlogPost;
   isPreview?: boolean;
+  featured?: boolean; // Added this property
 }
 
 interface PickCardProps {
@@ -177,6 +179,21 @@ interface PickCardProps {
 
 interface TestimonialCardProps {
   testimonial: Testimonial;
+}
+
+// FIXED SubscriptionGateProps to match actual usage
+interface SubscriptionGateProps {
+  content: string;
+  ctaText?: string;
+  children?: React.ReactNode;
+}
+
+// FIXED SubscriptionModalProps to match actual usage
+interface SubscriptionModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  ctaText?: string;
+  siteSettings?: SiteSettings; // Added this property
 }
 
 // Export all types
@@ -199,6 +216,8 @@ export type {
   BlogCardProps,
   PickCardProps,
   TestimonialCardProps,
+  SubscriptionGateProps,
+  SubscriptionModalProps,
 };
 
 export {

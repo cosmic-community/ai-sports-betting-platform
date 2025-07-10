@@ -2,12 +2,7 @@
 
 import { useState } from 'react';
 import { Lock, Star, CheckCircle, X } from 'lucide-react';
-
-interface SubscriptionGateProps {
-  content: string;
-  ctaText?: string;
-  children?: React.ReactNode;
-}
+import { SubscriptionGateProps } from '@/types';
 
 export default function SubscriptionGate({ 
   content, 
