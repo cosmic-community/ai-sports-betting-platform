@@ -27,8 +27,10 @@ async function getSiteSettings(): Promise<SiteSettings> {
       id: '',
       slug: 'site-settings',
       title: 'Site Settings',
-      type: 'site-settings',
+      type_slug: 'site-settings',
       status: 'published',
+      created_at: new Date().toISOString(),
+      modified_at: new Date().toISOString(),
       metadata: {
         subscription_price: '$279',
         regular_price: '$399',
