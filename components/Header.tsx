@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, TrendingUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SiteSettings } from '@/types';
+import Link from 'next/link';
 
 interface HeaderProps {
   siteSettings: SiteSettings;
@@ -37,14 +38,16 @@ export default function Header({ siteSettings }: HeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center space-x-2"
-          >
-            <TrendingUp className="h-8 w-8 text-primary-400" />
-            <span className="text-xl font-bold">AI Sports Betting</span>
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center space-x-2 cursor-pointer"
+            >
+              <TrendingUp className="h-8 w-8 text-primary-400" />
+              <span className="text-xl font-bold">AI Sports Betting</span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -62,13 +65,15 @@ export default function Header({ siteSettings }: HeaderProps) {
           </nav>
 
           {/* CTA Button */}
-          <motion.button
-            className="hidden md:block bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {siteSettings.metadata?.hero_cta_text || 'Get Started'}
-          </motion.button>
+          <Link href="/signup">
+            <motion.button
+              className="hidden md:block bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {siteSettings.metadata?.hero_cta_text || 'Get Started'}
+            </motion.button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -105,9 +110,11 @@ export default function Header({ siteSettings }: HeaderProps) {
                   </a>
                 ))}
                 <div className="px-4 py-2">
-                  <button className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                    {siteSettings.metadata?.hero_cta_text || 'Get Started'}
-                  </button>
+                  <Link href="/signup">
+                    <button className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                      {siteSettings.metadata?.hero_cta_text || 'Get Started'}
+                    </button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

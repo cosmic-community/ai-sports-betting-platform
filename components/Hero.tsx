@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { TrendingUp, Target, Zap, Users } from 'lucide-react';
 import { SiteSettings } from '@/types';
+import Link from 'next/link';
 
 interface HeroProps {
   siteSettings: SiteSettings;
@@ -83,13 +84,15 @@ export default function Hero({ siteSettings }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-colors w-full sm:w-auto"
-            >
-              {siteSettings.metadata?.hero_cta_text || 'Get AI Picks Now'}
-            </motion.button>
+            <Link href="/signup">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-colors w-full sm:w-auto"
+              >
+                {siteSettings.metadata?.hero_cta_text || 'Get AI Picks Now'}
+              </motion.button>
+            </Link>
             
             <motion.button
               whileHover={{ scale: 1.05 }}
