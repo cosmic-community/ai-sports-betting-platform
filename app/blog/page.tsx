@@ -79,16 +79,16 @@ export default async function BlogPage() {
                   </Link>
                 </h2>
                 
-                {post.metadata.excerpt && (
+                {(post.metadata.excerpt || post.metadata.intro_preview) && (
                   <p className="text-gray-300 mb-6 leading-relaxed">
-                    {post.metadata.excerpt}
+                    {post.metadata.excerpt || post.metadata.intro_preview}
                   </p>
                 )}
                 
-                {post.metadata.featured_image && (
+                {(post.metadata.featured_image || post.metadata.cover_image) && (
                   <div className="mb-6">
                     <img 
-                      src={`${post.metadata.featured_image.imgix_url}?w=800&h=400&fit=crop&auto=format,compress`}
+                      src={`${(post.metadata.featured_image || post.metadata.cover_image)?.imgix_url}?w=800&h=400&fit=crop&auto=format,compress`}
                       alt={post.title}
                       className="w-full h-48 object-cover rounded-lg"
                     />

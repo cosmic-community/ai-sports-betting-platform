@@ -29,6 +29,24 @@ interface SiteSettings extends CosmicObject {
   };
 }
 
+// Author interface for blog posts
+interface Author extends CosmicObject {
+  type_slug: 'authors';
+  metadata: {
+    avatar?: {
+      url: string;
+      imgix_url: string;
+    };
+    bio?: string;
+  };
+}
+
+// Category interface
+interface Category extends CosmicObject {
+  type_slug: 'categories';
+  title: string;
+}
+
 // Blog Posts interface
 interface BlogPost extends CosmicObject {
   type_slug: 'blog-posts';
@@ -38,14 +56,18 @@ interface BlogPost extends CosmicObject {
       url: string;
       imgix_url: string;
     };
+    featured_image?: {
+      url: string;
+      imgix_url: string;
+    };
     intro_preview?: string;
+    excerpt?: string;
     full_content?: string;
     cta_text?: string;
     featured?: boolean;
-    category?: {
-      key: string;
-      value: string;
-    };
+    category?: Category;
+    author?: Author;
+    tags?: string[];
   };
 }
 
@@ -161,6 +183,8 @@ export type {
   BlogPost,
   BettingPick,
   Testimonial,
+  Author,
+  Category,
   ConfidenceRating,
   PickResult,
   StarRating,
