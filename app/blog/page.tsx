@@ -1,4 +1,4 @@
-import { cosmic } from '@/lib/cosmic';
+import { getBlogPosts } from '@/lib/cosmic';
 import { BlogPost } from '@/types';
 import Link from 'next/link';
 
@@ -6,14 +6,9 @@ export default async function BlogPage() {
   let posts: BlogPost[] = [];
   
   try {
-    const response = await cosmic.objects.find({
-      type: 'posts'
-    }).props(['title', 'slug', 'metadata', 'created_at']).depth(1);
-    
-    posts = response.objects as BlogPost[];
+    posts = await getBlogPosts(20); // Fetch up to 20 posts
   } catch (error) {
     console.error('Error fetching blog posts:', error);
-    // Handle 404 error when no posts exist
     posts = [];
   }
 
@@ -48,7 +43,7 @@ export default async function BlogPage() {
               <article key={post.id} className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-blue-500 transition-colors">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-4">
-                    {post.metadata.author && (
+                    {post.metadata?.author && (
                       <div className="flex items-center space-x-2">
                         {post.metadata.author.metadata?.avatar && (
                           <img 
@@ -66,7 +61,7 @@ export default async function BlogPage() {
                       {new Date(post.created_at).toLocaleDateString()}
                     </span>
                   </div>
-                  {post.metadata.category && (
+                  {post.metadata?.category && (
                     <span className="px-3 py-1 bg-blue-600 text-blue-100 rounded-full text-sm">
                       {post.metadata.category.title}
                     </span>
@@ -79,13 +74,13 @@ export default async function BlogPage() {
                   </Link>
                 </h2>
                 
-                {(post.metadata.excerpt || post.metadata.intro_preview) && (
+                {(post.metadata?.excerpt || post.metadata?.intro_preview) && (
                   <p className="text-gray-300 mb-6 leading-relaxed">
                     {post.metadata.excerpt || post.metadata.intro_preview}
                   </p>
                 )}
                 
-                {(post.metadata.featured_image || post.metadata.cover_image) && (
+                {(post.metadata?.featured_image || post.metadata?.cover_image) && (
                   <div className="mb-6">
                     <img 
                       src={`${(post.metadata.featured_image || post.metadata.cover_image)?.imgix_url}?w=800&h=400&fit=crop&auto=format,compress`}
@@ -106,7 +101,7 @@ export default async function BlogPage() {
                     </svg>
                   </Link>
                   
-                  {post.metadata.tags && post.metadata.tags.length > 0 && (
+                  {post.metadata?.tags && post.metadata.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {post.metadata.tags.map((tag: string, index: number) => (
                         <span key={index} className="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">
