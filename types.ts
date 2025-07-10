@@ -47,9 +47,10 @@ interface Category extends CosmicObject {
   title: string;
 }
 
-// Blog Posts interface
+// Blog Posts interface - UPDATED with content and body properties
 interface BlogPost extends CosmicObject {
   type_slug: 'blog-posts';
+  content?: string; // Main content field from Cosmic
   metadata: {
     headline?: string;
     cover_image?: {
@@ -63,6 +64,8 @@ interface BlogPost extends CosmicObject {
     intro_preview?: string;
     excerpt?: string;
     full_content?: string;
+    content?: string; // Content in metadata
+    body?: string; // Body content in metadata
     cta_text?: string;
     featured?: boolean;
     category?: Category;
