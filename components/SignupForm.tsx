@@ -210,9 +210,23 @@ export default function SignupForm({ siteSettings }: SignupFormProps) {
                 <CreditCard className="h-5 w-5 text-gray-600 mr-3" />
                 <span className="text-gray-700">Card</span>
                 <div className="ml-auto flex space-x-2">
-                  <img src="/api/placeholder/24/16" alt="Visa" className="h-4" />
-                  <img src="/api/placeholder/24/16" alt="Mastercard" className="h-4" />
-                  <img src="/api/placeholder/24/16" alt="American Express" className="h-4" />
+                  {/* Visa Icon */}
+                  <svg className="h-6 w-8" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="32" rx="4" fill="#1A1F71"/>
+                    <path d="M18.5 11.5L15.5 20.5H13L11.5 14.5C11.4 14.1 11.2 13.8 10.9 13.6C10.2 13.2 9.4 12.9 8.5 12.7V12.5H12.5C13.1 12.5 13.6 12.9 13.7 13.5L14.5 17.5L16.5 12.5H18.5ZM22.5 12.5L20.5 20.5H18.5L20.5 12.5H22.5ZM29.5 13.5C29.5 12.9 29.1 12.5 28.5 12.5C27.9 12.5 27.3 12.7 26.8 13L26.5 12.5H25L27 16.5L25 20.5H27L28.5 18L30 20.5H32L29.5 16.5C29.5 16.5 29.5 13.5 29.5 13.5ZM38.5 12.5L37 20.5H35L33.5 12.5H35L36 17.5L37.5 12.5H38.5Z" fill="white"/>
+                  </svg>
+                  {/* Mastercard Icon */}
+                  <svg className="h-6 w-8" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="32" rx="4" fill="#FF5A00"/>
+                    <circle cx="18" cy="16" r="8" fill="#FF5A00"/>
+                    <circle cx="30" cy="16" r="8" fill="#EB001B"/>
+                    <path d="M24 9.5C26.5 11.5 26.5 20.5 24 22.5C21.5 20.5 21.5 11.5 24 9.5Z" fill="#FF5A00"/>
+                  </svg>
+                  {/* American Express Icon */}
+                  <svg className="h-6 w-8" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="32" rx="4" fill="#006FCF"/>
+                    <path d="M10 12H14L16 16L18 12H22V20H20V14.5L18.5 17.5H15.5L14 14.5V20H10V12ZM24 12H32V14H26V15H31V17H26V18H32V20H24V12ZM34 12H38L40 16L42 12H46L42.5 16L46 20H42L40 16L38 20H34L37.5 16L34 12Z" fill="white"/>
+                  </svg>
                 </div>
               </label>
 
