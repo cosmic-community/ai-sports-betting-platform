@@ -26,7 +26,7 @@ export default function Header({ siteSettings }: HeaderProps) {
   const navItems = [
     { name: 'How It Works', href: '#how-it-works' },
     { name: 'Picks', href: '#picks' },
-    { name: 'Blog', href: '#blog' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Pricing', href: '#pricing' },
   ];
