@@ -22,19 +22,27 @@ async function getSiteSettings(): Promise<SiteSettings> {
     return response.object;
   } catch (error) {
     console.error('Error fetching site settings:', error);
-    // Return default settings if fetch fails
+    // Return default settings if fetch fails - only include properties defined in SiteSettings interface
     return {
-      id: '',
+      id: 'default-site-settings',
       slug: 'site-settings',
       title: 'Site Settings',
       type_slug: 'site-settings',
-      status: 'published',
       created_at: new Date().toISOString(),
       modified_at: new Date().toISOString(),
       metadata: {
         subscription_price: '$279',
         regular_price: '$399',
         hero_cta_text: 'Get AI Picks Now',
+        hero_headline: 'AI-Powered Sports Betting Picks',
+        hero_subheadline: 'Join thousands of winning bettors',
+        current_season_record: '78-42',
+        season_roi: '24.3%',
+        win_rate: '65%',
+        floating_button_text: 'Get Picks Now',
+        exit_intent_headline: 'Wait! Don\'t Miss Out',
+        exit_intent_offer: 'Get 30% Off',
+        blog_cta_default: 'Ready to start winning?',
       },
     };
   }
