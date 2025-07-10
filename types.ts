@@ -41,16 +41,16 @@ interface Author extends CosmicObject {
   };
 }
 
-// Category interface
-interface Category extends CosmicObject {
-  type_slug: 'categories';
-  title: string;
+// Category interface - FIXED to match actual Cosmic CMS structure
+interface Category {
+  key: string;
+  value: string;
 }
 
-// Blog Posts interface - UPDATED with content and body properties
+// Blog Posts interface - UPDATED with proper category typing
 interface BlogPost extends CosmicObject {
   type_slug: 'blog-posts';
-  content?: string; // Main content field from Cosmic
+  content?: string;
   metadata: {
     headline?: string;
     cover_image?: {
@@ -64,11 +64,11 @@ interface BlogPost extends CosmicObject {
     intro_preview?: string;
     excerpt?: string;
     full_content?: string;
-    content?: string; // Content in metadata
-    body?: string; // Body content in metadata
+    content?: string;
+    body?: string;
     cta_text?: string;
     featured?: boolean;
-    category?: Category;
+    category?: Category; // This is the select-dropdown format
     author?: Author;
     tags?: string[];
   };
