@@ -72,7 +72,7 @@ export default function BlogPreview({ posts }: BlogPreviewProps) {
                   <div className="flex items-center space-x-2 mb-3">
                     <Tag className="h-4 w-4 text-primary-400" />
                     <span className="text-sm font-medium text-primary-400">
-                      {post.metadata.category.value}
+                      {post.metadata.category.title}
                     </span>
                   </div>
                 )}
